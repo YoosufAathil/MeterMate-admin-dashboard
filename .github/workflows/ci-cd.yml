@@ -2,7 +2,6 @@ name: Continuous Integration and Delivery
 on:
   push:
     branches: [main, staging]
-
 jobs:
   test_and_build:
     runs-on: ubuntu-latest
@@ -20,7 +19,6 @@ jobs:
           name: build
           path: build
           retention-days: 1
-
   deploy_to_production:
     if: github.ref == 'refs/heads/main'
     needs: test_and_build
@@ -42,8 +40,7 @@ jobs:
             }}
           channelId: live
           projectId: metermate-dashboard-production
-
-   deploy_to_staging:
+  deploy_to_staging:
     if: github.ref == 'refs/heads/staging'
     needs: test_and_build
     runs-on: ubuntu-latest
