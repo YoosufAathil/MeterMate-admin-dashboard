@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "metermate-dashboard-production"
-  }
+    "default": "metermate-dashboard-production",
+    "staging": "metermate-dashboard-staging"
+  },
+  "targets": {},
+  "etags": {}
 }
