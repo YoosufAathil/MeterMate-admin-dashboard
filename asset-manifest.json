@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/MeterMate-admin-dashboard/static/css/main.093425f8.css",
+    "main.js": "/MeterMate-admin-dashboard/static/js/main.da423eb2.js",
+    "static/media/logo192.png": "/MeterMate-admin-dashboard/static/media/logo192.1c37d8b0f17d0bf5fefa.png",
+    "index.html": "/MeterMate-admin-dashboard/index.html",
+    "main.093425f8.css.map": "/MeterMate-admin-dashboard/static/css/main.093425f8.css.map",
+    "main.da423eb2.js.map": "/MeterMate-admin-dashboard/static/js/main.da423eb2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.093425f8.css",
+    "static/js/main.da423eb2.js"
+  ]
+}
