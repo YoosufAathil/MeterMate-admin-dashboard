@@ -1,6 +1,7 @@
 {
   "name": "MeterMate",
   "version": "0.1.0",
+  "homepage": "https://yoosufaathil.github.io/MeterMate-admin-dashboard/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.1",
@@ -11,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
+    "gh-pages": "^6.1.1",
     "react": "^17.0.2",
     "react-circular-progressbar": "^2.0.4",
     "react-dom": "^17.0.2",
@@ -24,7 +26,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
