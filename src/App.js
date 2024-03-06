@@ -4,7 +4,8 @@ import Single from "./pages/single/Single";
 import New from "./pages/new_user/New";
 import Readings from "./pages/readings/Readings";
 import Payments from "./pages/payments/Payments";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
@@ -15,7 +16,7 @@ function App() {
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
-      <BrowserRouter>
+      <Router>
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
@@ -37,7 +38,7 @@ function App() {
             </Route>
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }
