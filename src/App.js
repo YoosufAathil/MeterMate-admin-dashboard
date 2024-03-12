@@ -4,7 +4,7 @@ import Single from "./pages/single/Single";
 import New from "./pages/new_user/New";
 import Readings from "./pages/readings/Readings";
 import Payments from "./pages/payments/Payments";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import { userInputs } from "./formSource";
 import "./style/dark.scss";
@@ -15,27 +15,81 @@ import Login from "./pages/login/Login";
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
+  const currentUser = false;
+
+  // if user is not logged in, redirect to login page
+  const RequireAuth = ({ children }) => {
+    return currentUser ? children : <Navigate to="/login" />;
+  };
+
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <Router>
         <Routes>
           <Route path="/">
-            <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <Home />{" "}
+                </RequireAuth>
+              }
+            />
             <Route path="users">
-              <Route index element={<List />} />
-              <Route path=":userId" element={<Single />} />
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":userId"
+                element={
+                  <RequireAuth>
+                    <Single />
+                  </RequireAuth>
+                }
+              />
               <Route
                 path="new"
-                element={<New inputs={userInputs} title="Add New User" />}
+                element={
+                  <RequireAuth>
+                    <New inputs={userInputs} title="Add New User" />
+                  </RequireAuth>
+                }
               />
             </Route>
             <Route path="readings">
-              <Route index element={<Readings />} />
-              <Route path=":readingId" element={<Single />} />
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <Readings />
+                  </RequireAuth>
+                }
+              />
+
+              <Route
+                path=":readingId"
+                element={
+                  <RequireAuth>
+                    <Single />
+                  </RequireAuth>
+                }
+              />
             </Route>
             <Route path="payments">
-              <Route index element={<Payments />} />
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <Payments />
+                  </RequireAuth>
+                }
+              />
               {/* <Route path=":paymentId" element={<Single />} /> */}
             </Route>
           </Route>
