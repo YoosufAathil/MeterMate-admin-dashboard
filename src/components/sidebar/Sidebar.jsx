@@ -15,8 +15,8 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
-// import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-// import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -77,6 +77,15 @@ const Sidebar = () => {
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
+          </li>
+          <p className="title">USER</p>
+          <li>
+            <AccountCircleOutlinedIcon className="icon" />
+            <span>Profile</span>
+          </li>
+          <li>
+            <ExitToAppIcon className="icon" />
+            <span>Logout</span>
           </li>
         </ul>
       </div>

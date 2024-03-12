@@ -11,17 +11,18 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import Login from "./pages/login/Login";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
-  const currentUser = false;
+  const { currentUser } = useContext(AuthContext);
 
   // if user is not logged in, redirect to login page
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/login" />;
   };
-
+  // console.log(currentUser);
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <Router>
