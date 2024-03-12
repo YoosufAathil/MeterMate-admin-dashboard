@@ -1,7 +1,6 @@
 {
   "name": "MeterMate",
   "version": "0.1.0",
-  "homepage": "https://yoosufaathil.github.io/MeterMate-admin-dashboard/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.1",

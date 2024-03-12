@@ -5,7 +5,7 @@ import New from "./pages/new_user/New";
 import Readings from "./pages/readings/Readings";
 import Payments from "./pages/payments/Payments";
 import { Routes, Route } from "react-router-dom";
-import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
