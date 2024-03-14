@@ -70,7 +70,7 @@
             cursor: pointer;
             margin-top: 10px;
 
-            &disabled {
+            &:disabled {
               background-color: lightgray;
               cursor: not-allowed;
             }
