@@ -10,6 +10,7 @@ import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
+import { AuthContext } from "../../context/AuthContext";
 
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
@@ -20,6 +21,14 @@ import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  const { logout } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    if (window.confirm("Are you sure you want to logout?")) {
+      logout();
+    }
+  };
+
   return (
     <div className="sidebar">
       <div className="top">
@@ -85,7 +94,7 @@ const Sidebar = () => {
           </li>
           <li>
             <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            <span onClick={handleLogout}> Logout</span>
           </li>
         </ul>
       </div>

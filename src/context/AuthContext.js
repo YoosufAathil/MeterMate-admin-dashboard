@@ -14,8 +14,14 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(state.currentUser));
   }, [state.currentUser]);
 
+  const logout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
+
   return (
-    <AuthContext.Provider value={{ currentUser: state.currentUser, dispatch }}>
+    <AuthContext.Provider
+      value={{ currentUser: state.currentUser, dispatch, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

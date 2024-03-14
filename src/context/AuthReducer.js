@@ -5,11 +5,13 @@ const AuthReducer = (state, action) => {
         currentUser: action.payload,
       };
     }
-    case "LOGOUT": {
+    case "LOGOUT":
+      localStorage.removeItem("user");
       return {
+        ...state,
         currentUser: null,
       };
-    }
+
     default:
       return state;
   }

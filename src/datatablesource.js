@@ -7,7 +7,7 @@ export const userColumns = [
       return (
         <div className="cellWithImg">
           <img className="cellImg" src={params.row.img} alt="avatar" />
-          {params.row.username}
+          {params.row.fullname}
         </div>
       );
     },
