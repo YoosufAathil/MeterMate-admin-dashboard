@@ -6,13 +6,15 @@ import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlin
 import ElectricMeterOutlinedIcon from "@mui/icons-material/ElectricMeterOutlined";
 
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { db } from "../../firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 const Widget = ({ type }) => {
-  let data;
+  const [amount, setAmount] = useState(null);
+  const [diff, setDiff] = useState(null);
 
-  //temporary
-  const amount = 250000;
-  const diff = 22;
+  let data;
 
   switch (type) {
     case "user":
@@ -95,7 +97,35 @@ const Widget = ({ type }) => {
     default:
       break;
   }
+  useEffect(() => {
+    const fetchData = async () => {
+      const today = new Date();
+      const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
+      const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
 
+      const lastMonthQuery = query(
+        collection(db, "users"),
+        where("timeStamp", "<=", today),
+        where("timeStamp", ">", lastMonth)
+      );
+      const prevMonthQuery = query(
+        collection(db, "users"),
+        where("timeStamp", "<=", lastMonth),
+        where("timeStamp", ">", prevMonth)
+      );
+
+      const lastMonthData = await getDocs(lastMonthQuery);
+      const prevMonthData = await getDocs(prevMonthQuery);
+
+      setAmount(lastMonthData.docs.length);
+      setDiff(
+        ((lastMonthData.docs.length - prevMonthData.docs.length) /
+          prevMonthData.docs.length) *
+          100
+      );
+    };
+    fetchData();
+  }, []);
   return (
     <div className="widget">
       <div className="left">
